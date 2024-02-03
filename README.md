@@ -19,7 +19,12 @@
 
 ## Chod Aplikace
 - **Spuštění Aplikace:**
-  - Cesta: `Path/to/project: python main.py`
+- 1. `Path/to/project: python -m venv venv`
+  2. `Path/to/project: venv\Scripts\activate`
+  3. `Path/to/project: python -m pip install pyodbc`
+  4. `Path/to/project: python -m pip install -U prettytable`
+  5. `Path/to/project: python main.py`
+## Popis
 - Po úspěšném spuštění program přivítá uživatele.
 - Uživatel má možnost přihlásit se jako administrátor (admin) nebo jako běžný uživatel.
 - Administrátor má plná práva nad aplikací, zatímco uživatel má omezená práva.
