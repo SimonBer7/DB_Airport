@@ -1,8 +1,40 @@
-import smtplib
-from email.mime.text import MIMEText
-
 class EmailSender:
+    """
+    The EmailSender class represents an object responsible for sending reservation confirmation emails to passengers.
+
+    ...
+
+    Attributes
+    ----------
+    subject : str
+        The subject of the email.
+    body : str
+        The body of the email.
+    sender_email : str
+        The email address from which the email is sent.
+    sender_password : str
+        The password associated with the sender's email address.
+
+    Methods
+    -------
+    set_values(reservation, flight)
+        Sets the values for the email subject, body, sender email, and sender password based on reservation and flight details.
+    send_reservation_email(user)
+        Sends a reservation confirmation email to the provided user.
+
+    """
+
     def __init__(self, reservation, flight):
+        """
+        Initializes a new EmailSender object with initial attributes set to None.
+
+        Parameters
+        ----------
+        reservation : Reservation
+            The Reservation object for which the email is being sent.
+        flight : Flight
+            The Flight object associated with the reservation.
+        """
         self.subject = None
         self.body = None
         self.sender_email = None
@@ -10,11 +42,21 @@ class EmailSender:
         self.set_values(reservation, flight)
 
     def set_values(self, reservation, flight):
+        """
+        Sets the values for the email subject, body, sender email, and sender password based on reservation and flight details.
+
+        Parameters
+        ----------
+        reservation : Reservation
+            The Reservation object for which the email is being sent.
+        flight : Flight
+            The Flight object associated with the reservation.
+        """
         self.subject = "Bernard's Airport - Reservation " + str(reservation.pin)
         self.sender_email = "airportbernard@gmail.com"
         self.sender_password = "wyzm hzct ador fcps"
         self.body = f"""Dear Passenger,
-        
+
 We hope this message finds you well. Thank you for choosing Bernard's Airport for your travel needs.
 
 Your reservation details are as follows:
@@ -36,9 +78,15 @@ Sincerely,
 Bernard's Airport
 """
 
-
-
     def send_reservation_email(self, user):
+        """
+        Sends a reservation confirmation email to the provided user.
+
+        Parameters
+        ----------
+        user : Passenger
+            The Passenger object representing the user to whom the email will be sent.
+        """
         msg = MIMEText(self.body)
         msg["Subject"] = self.subject
         msg["From"] = self.sender_email
